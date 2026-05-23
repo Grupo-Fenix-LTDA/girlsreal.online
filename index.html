@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escola Champagnat Unidade Birigui — Tradição Marista em Educação</title>
+<meta name="description" content="Escola Champagnat Unidade Birigui — Educação Infantil e Ensino Fundamental sob a tradição educativa marista, em Birigui/SP.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A2B5C;
+    --navy-deep:#0F1830;
+    --wine:#6B2737;
+    --gold:#B8956A;
+    --gold-soft:#D4B789;
+    --cream:#FAF7F0;
+    --cream-deep:#F2EDDF;
+    --paper:#FFFFFF;
+    --ink:#0F1830;
+    --muted:#6B6B6B;
+    --line:#D9D2C2;
+    --display:'Cormorant Garamond', Georgia, serif;
+    --body:'Manrope', system-ui, -apple-system, sans-serif;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    font-weight:400;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.modal-open{overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  /* ===== Decorative grain background ===== */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    z-index:1;
+    opacity:.6;
+    mix-blend-mode:multiply;
+  }
+  main,header,footer{position:relative;z-index:2}
+
+  /* ===== Typography ===== */
+  h1,h2,h3,h4{font-family:var(--display);font-weight:500;color:var(--navy);letter-spacing:-.01em;line-height:1.15}
+  h1{font-size:clamp(2.6rem,6.2vw,4.8rem);font-weight:500}
+  h2{font-size:clamp(2rem,4.2vw,3.2rem)}
+  h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:600}
+  h4{font-size:1.2rem;font-weight:600}
+  .eyebrow{
+    font-family:var(--body);font-size:.78rem;letter-spacing:.18em;
+    text-transform:uppercase;font-weight:600;color:var(--wine);
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{
+    content:"";width:24px;height:1px;background:var(--wine);display:inline-block;
+  }
+  .lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;
+    background:rgba(250,247,240,.92);
+    backdrop-filter:saturate(180%) blur(10px);
+    -webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+    z-index:100;
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.1rem 1.5rem;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:.85rem}
+  .brand-mark{
+    width:42px;height:42px;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    border-radius:2px;flex-shrink:0;
+  }
+  .brand-mark svg{width:24px;height:24px;fill:var(--gold-soft)}
+  .brand-name{display:flex;flex-direction:column;line-height:1.05}
+  .brand-name b{
+    font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--navy);
+    letter-spacing:.01em;
+  }
+  .brand-name span{
+    font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;
+  }
+  .nav-links{display:flex;gap:2rem;align-items:center}
+  .nav-links a{
+    font-size:.88rem;font-weight:500;color:var(--ink);
+    transition:color .2s;position:relative;
+  }
+  .nav-links a:hover{color:var(--wine)}
+  .nav-cta{
+    background:var(--navy);color:var(--cream);
+    padding:.7rem 1.4rem;border-radius:2px;font-weight:600;
+    font-size:.85rem;letter-spacing:.04em;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--wine)}
+  .menu-toggle{display:none;width:32px;height:32px}
+  .menu-toggle span{
+    display:block;width:24px;height:1.5px;background:var(--navy);
+    margin:5px auto;transition:.3s;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:6rem 0 7rem;position:relative;
+    background:linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:4rem;align-items:center;
+  }
+  .hero-text .eyebrow{margin-bottom:1.5rem}
+  .hero h1{margin-bottom:1.8rem;color:var(--navy-deep)}
+  .hero h1 em{font-style:italic;color:var(--wine);font-weight:400}
+  .hero-cta{
+    display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    padding:1rem 1.8rem;font-weight:600;font-size:.92rem;
+    letter-spacing:.03em;border-radius:2px;
+    transition:all .25s;cursor:pointer;
+  }
+  .btn-primary{background:var(--navy);color:var(--cream)}
+  .btn-primary:hover{background:var(--wine);transform:translateY(-1px)}
+  .btn-ghost{
+    background:transparent;color:var(--navy);
+    border:1px solid var(--navy);
+  }
+  .btn-ghost:hover{background:var(--navy);color:var(--cream)}
+
+  /* Hero illustration: crest-style emblem */
+  .hero-art{
+    position:relative;height:480px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .crest{
+    width:100%;max-width:380px;aspect-ratio:1;
+    position:relative;
+  }
+  .crest-bg{
+    position:absolute;inset:0;border:1px solid var(--gold);
+    border-radius:50%;
+  }
+  .crest-bg-inner{
+    position:absolute;inset:18px;border:1px solid var(--gold-soft);
+    border-radius:50%;
+  }
+  .crest svg{
+    position:absolute;inset:0;width:100%;height:100%;
+  }
+  .crest-year{
+    position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);
+    font-family:var(--display);font-style:italic;color:var(--wine);
+    font-size:1.05rem;letter-spacing:.04em;white-space:nowrap;
+  }
+
+  /* ===== Section base ===== */
+  section.section{padding:7rem 0;border-top:1px solid var(--line)}
+  .sec-head{max-width:780px;margin:0 auto 4rem;text-align:center}
+  .sec-head .eyebrow{justify-content:center;display:inline-flex}
+  .sec-head::after{
+    content:"";display:block;width:32px;height:1px;background:var(--gold);
+    margin:1.5rem auto 0;
+  }
+  .sec-head h2{margin:1.2rem 0 1.2rem}
+
+  /* ===== Sobre ===== */
+  .sobre{background:var(--paper)}
+  .sobre-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+  .sobre-art{
+    aspect-ratio:3/4;background:var(--navy);
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sobre-art::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(184,149,106,.25), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(107,39,55,.25), transparent 60%);
+  }
+  .sobre-quote{
+    position:relative;z-index:2;padding:3rem;color:var(--cream);
+    text-align:center;
+  }
+  .sobre-quote p{
+    font-family:var(--display);font-style:italic;font-size:1.6rem;
+    line-height:1.4;color:var(--cream);margin-bottom:1.5rem;font-weight:400;
+  }
+  .sobre-quote cite{
+    display:block;font-family:var(--body);font-style:normal;
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:500;
+  }
+  .sobre-text h2{margin-bottom:1.8rem}
+  .sobre-text p{margin-bottom:1.3rem;font-size:1.02rem;color:#3a3a3a}
+  .sobre-text p:last-child{margin-bottom:0}
+
+  /* ===== Pedagogia ===== */
+  .pedagogia{background:var(--cream-deep)}
+  .valores{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+    margin-top:3rem;
+  }
+  .valor{
+    background:var(--paper);padding:2.4rem 1.8rem;
+    border-top:2px solid var(--gold);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .valor:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(15,24,48,.08)}
+  .valor-num{
+    font-family:var(--display);font-size:.95rem;font-style:italic;
+    color:var(--wine);letter-spacing:.08em;margin-bottom:1.2rem;
+  }
+  .valor h3{margin-bottom:.8rem;font-size:1.25rem}
+  .valor p{color:var(--muted);font-size:.92rem;line-height:1.6}
+
+  /* ===== Segmentos ===== */
+  .segmentos{background:var(--paper)}
+  .seg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+  .seg{
+    border:1px solid var(--line);padding:3rem 2.5rem;
+    background:var(--cream);
+    position:relative;transition:all .25s;
+  }
+  .seg:hover{border-color:var(--gold);background:var(--paper)}
+  .seg-tag{
+    font-family:var(--display);font-style:italic;font-size:.95rem;
+    color:var(--gold);margin-bottom:.6rem;
+  }
+  .seg h3{margin-bottom:1rem;color:var(--navy)}
+  .seg-faixa{
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--wine);font-weight:600;margin-bottom:1.4rem;
+  }
+  .seg p{color:#3a3a3a;font-size:.96rem;margin-bottom:1.2rem}
+  .seg ul{list-style:none;padding:0}
+  .seg li{
+    padding:.6rem 0;border-bottom:1px solid var(--line);
+    font-size:.9rem;display:flex;align-items:flex-start;gap:.7rem;
+  }
+  .seg li:last-child{border-bottom:none}
+  .seg li::before{
+    content:"·";color:var(--gold);font-weight:700;font-size:1.4rem;line-height:1;
+  }
+
+  /* ===== Diferenciais ===== */
+  .diferenciais{
+    background:var(--navy);color:var(--cream);
+    border-top:none;
+  }
+  .diferenciais h2,.diferenciais h3{color:var(--cream)}
+  .diferenciais .sec-head .eyebrow{color:var(--gold-soft)}
+  .diferenciais .sec-head .eyebrow::before{background:var(--gold-soft)}
+  .diferenciais .sec-head::after{background:var(--gold-soft)}
+  .dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
+  .dif{padding:0}
+  .dif-icon{
+    width:48px;height:48px;border:1px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.6rem;border-radius:2px;
+  }
+  .dif-icon svg{width:24px;height:24px;stroke:var(--gold-soft);fill:none;stroke-width:1.5}
+  .dif h3{margin-bottom:.8rem;font-size:1.3rem}
+  .dif p{color:#c9c9d4;font-size:.95rem;line-height:1.7}
+
+  /* ===== Depoimentos ===== */
+  .depoimentos{background:var(--cream)}
+  .dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .dep{
+    background:var(--paper);padding:2.4rem;border-top:1px solid var(--gold);
+    position:relative;
+  }
+  .dep::before{
+    content:"“";position:absolute;top:-.4rem;left:1.4rem;
+    font-family:var(--display);font-size:5rem;color:var(--gold-soft);
+    line-height:1;
+  }
+  .dep-text{
+    font-family:var(--display);font-style:italic;font-size:1.08rem;
+    color:#3a3a3a;line-height:1.6;margin:1.5rem 0 1.8rem;font-weight:500;
+  }
+  .dep-author{
+    font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--wine);font-weight:600;
+  }
+  .dep-role{font-size:.82rem;color:var(--muted);margin-top:.2rem;font-weight:400;text-transform:none;letter-spacing:0}
+
+  /* ===== Matrículas ===== */
+  .matriculas{background:var(--cream-deep)}
+  .mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2rem;border-left:1px solid var(--line)}
+  .mat-step{
+    padding:2.4rem 2rem;
+    border-right:1px solid var(--line);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  .mat-num{
+    font-family:var(--display);font-size:2.6rem;font-style:italic;
+    color:var(--gold);line-height:1;margin-bottom:1rem;font-weight:500;
+  }
+  .mat-step h3{margin-bottom:.8rem;font-size:1.2rem}
+  .mat-step p{color:var(--muted);font-size:.93rem;line-height:1.6}
+  .mat-note{
+    margin-top:3rem;padding:2rem;background:var(--paper);
+    border-left:3px solid var(--wine);
+    font-size:.95rem;color:#3a3a3a;
+  }
+
+  /* ===== Contato ===== */
+  .contato{background:var(--paper)}
+  .cont-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+  .cont-info h2{margin-bottom:1.5rem}
+  .cont-info .lead{margin-bottom:2.5rem}
+  .cont-block{
+    margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);
+  }
+  .cont-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+  .cont-block h4{
+    font-family:var(--body);font-size:.78rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--wine);font-weight:600;margin-bottom:.8rem;
+  }
+  .cont-block p,.cont-block a{
+    font-size:1rem;color:var(--ink);line-height:1.7;
+  }
+  .cont-block a:hover{color:var(--wine)}
+  .form{display:grid;gap:1.4rem;background:var(--cream);padding:2.8rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .field{display:flex;flex-direction:column;gap:.4rem}
+  .field label{
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+  .field input,.field select,.field textarea{
+    border:none;border-bottom:1px solid var(--line);background:transparent;
+    padding:.7rem 0;font-family:inherit;font-size:.98rem;color:var(--ink);
+    transition:border-color .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-bottom-color:var(--navy);
+  }
+  .field textarea{resize:vertical;min-height:90px}
+  .form button{
+    background:var(--navy);color:var(--cream);padding:1rem 2rem;
+    font-weight:600;letter-spacing:.04em;font-size:.9rem;
+    margin-top:.8rem;justify-self:start;transition:background .2s;
+  }
+  .form button:hover{background:var(--wine)}
+  .form-msg{
+    grid-column:1/-1;padding:.8rem 1rem;background:var(--cream-deep);
+    border-left:3px solid var(--gold);font-size:.9rem;color:var(--ink);
+    display:none;
+  }
+  .form-msg.show{display:block}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy-deep);color:#c9c9d4;padding:5rem 0 2rem;position:relative;z-index:2}
+  .foot-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;
+    padding-bottom:3rem;border-bottom:1px solid rgba(217,210,194,.15);
+  }
+  .foot-brand .brand-mark{background:var(--cream);margin-bottom:1.2rem}
+  .foot-brand .brand-mark svg{fill:var(--navy-deep)}
+  .foot-brand h4{
+    font-family:var(--display);color:var(--cream);font-size:1.3rem;
+    margin-bottom:.6rem;font-weight:600;
+  }
+  .foot-brand p{font-size:.88rem;line-height:1.7;color:#a8a8b8;max-width:34ch}
+  .foot-col h5{
+    font-family:var(--body);font-size:.76rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:1.2rem;
+  }
+  .foot-col ul{list-style:none}
+  .foot-col li{margin-bottom:.6rem;font-size:.9rem;line-height:1.5}
+  .foot-col a:hover{color:var(--gold-soft)}
+  .foot-legal{
+    padding-top:2rem;display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:1rem;
+  }
+  .foot-legal p{font-size:.8rem;color:#8a8a98}
+  .foot-cnpj{font-size:.82rem;color:#a8a8b8;line-height:1.8}
+  .foot-cnpj b{color:var(--cream);font-weight:600;letter-spacing:.01em;display:block;font-family:var(--display);font-size:1rem;margin-bottom:.3rem}
+  .foot-legal-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .foot-legal-links a{
+    font-size:.8rem;color:#a8a8b8;border-bottom:1px solid transparent;
+    transition:all .2s;cursor:pointer;
+  }
+  .foot-legal-links a:hover{color:var(--gold-soft);border-bottom-color:var(--gold-soft)}
+
+  /* ===== Modal (Privacidade/Termos) ===== */
+  .modal{
+    position:fixed;inset:0;background:rgba(15,24,48,.85);
+    display:none;align-items:flex-start;justify-content:center;
+    z-index:1000;padding:3rem 1rem;overflow-y:auto;
+  }
+  .modal.show{display:flex}
+  .modal-content{
+    background:var(--cream);max-width:780px;width:100%;
+    padding:3.5rem 3rem;position:relative;
+    border-top:3px solid var(--gold);
+  }
+  .modal-close{
+    position:absolute;top:1.4rem;right:1.4rem;
+    width:36px;height:36px;font-size:1.5rem;color:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    transition:color .2s;
+  }
+  .modal-close:hover{color:var(--wine)}
+  .modal h2{margin-bottom:.6rem;font-size:2.2rem}
+  .modal .modal-sub{
+    font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--wine);font-weight:600;margin-bottom:2.2rem;
+  }
+  .modal h3{
+    font-family:var(--display);color:var(--navy);font-size:1.25rem;
+    font-weight:600;margin:2rem 0 .8rem;
+  }
+  .modal p,.modal li{
+    font-size:.96rem;line-height:1.75;color:#3a3a3a;margin-bottom:.8rem;
+  }
+  .modal ul{padding-left:1.4rem;margin-bottom:1rem}
+
+  /* ===== Responsivo ===== */
+  @media (max-width:980px){
+    .nav-links{display:none;position:fixed;top:72px;left:0;right:0;
+      background:var(--cream);flex-direction:column;padding:2rem;
+      border-bottom:1px solid var(--line);gap:1.5rem;}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:block}
+    .hero-grid,.sobre-grid,.cont-grid{grid-template-columns:1fr;gap:3rem}
+    .hero-art{height:340px;order:-1}
+    .crest{max-width:280px}
+    .valores{grid-template-columns:repeat(2,1fr)}
+    .seg-grid,.dep-grid,.dif-grid,.mat-grid{grid-template-columns:1fr}
+    .mat-step{border-right:1px solid var(--line)}
+    .foot-grid{grid-template-columns:1fr;gap:2.5rem}
+    .form-row{grid-template-columns:1fr}
+    section.section,.hero{padding:4.5rem 0}
+    .modal-content{padding:2.5rem 1.5rem}
+  }
+  @media (max-width:560px){
+    .valores{grid-template-columns:1fr}
+    .nav{padding:1rem}
+    .hero{padding-bottom:5rem}
+    .form{padding:1.8rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav class="nav" aria-label="Navegação principal">
+    <a href="#topo" class="brand" aria-label="Escola Champagnat Birigui — Início">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2l1.8 4.6 4.9.4-3.7 3.2 1.1 4.8L12 12.5 7.9 15l1.1-4.8L5.3 7l4.9-.4L12 2z"/></svg>
+      </span>
+      <span class="brand-name">
+        <b>Champagnat</b>
+        <span>Unidade Birigui</span>
+      </span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#pedagogia">Pedagogia</a>
+      <a href="#segmentos">Segmentos</a>
+      <a href="#matriculas">Matrículas</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="nav-cta">Agende uma visita</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menu" id="menuBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="topo">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Tradição marista · desde 1817</span>
+      <h1>Educação que forma <em>pessoas inteiras</em>, no coração de Birigui.</h1>
+      <p class="lead">Acreditamos em uma escola que ensina, escuta e acompanha — onde cada criança encontra um lugar para crescer com sentido, espírito de família e amor ao trabalho.</p>
+      <div class="hero-cta">
+        <a href="#matriculas" class="btn btn-primary">Conheça as matrículas</a>
+        <a href="#sobre" class="btn btn-ghost">Nossa proposta</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="crest">
+        <div class="crest-bg"></div>
+        <div class="crest-bg-inner"></div>
+        <svg viewBox="0 0 200 200">
+          <!-- livro aberto -->
+          <path d="M50 110 Q100 100 150 110 L150 150 Q100 140 50 150 Z" fill="none" stroke="#B8956A" stroke-width="1.2"/>
+          <path d="M100 105 L100 145" stroke="#B8956A" stroke-width="1.2"/>
+          <!-- cruz acima -->
+          <path d="M100 50 L100 95 M88 67 L112 67" stroke="#1A2B5C" stroke-width="2" stroke-linecap="round"/>
+          <!-- chama -->
+          <path d="M100 38 Q95 42 97 48 Q100 44 100 38 Z" fill="#6B2737"/>
+          <!-- letras M -->
+          <text x="100" y="180" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="14" fill="#1A2B5C" letter-spacing="3">CHAMPAGNAT</text>
+        </svg>
+        <div class="crest-year">Birigui · São Paulo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-art">
+        <div class="sobre-quote">
+          <p>“Educar é um ato de coragem, de paciência e de amor — é caminhar ao lado de quem aprende.”</p>
+          <cite>São Marcelino Champagnat</cite>
+        </div>
+      </div>
+      <div class="sobre-text">
+        <span class="eyebrow">Sobre nós</span>
+        <h2>Uma escola fiel à tradição marista, atenta ao tempo presente.</h2>
+        <p>A Escola Champagnat Unidade Birigui faz parte da história educativa marista no Brasil, conduzida pela Associação Brasileira de Educação e Cultura (ABEC), entidade civil sem fins lucrativos que mantém escolas inspiradas na obra de São Marcelino Champagnat, fundador dos Irmãos Maristas em 1817.</p>
+        <p>Nascida em 2021 para servir as famílias de Birigui e região, nossa unidade reúne educadores que acreditam em uma escola próxima, sólida e humana — atenta ao desenvolvimento integral dos estudantes em todas as etapas da vida escolar.</p>
+        <p>Mantemos o compromisso com uma formação que articula excelência acadêmica, valores humano-cristãos e cuidado individual. Aqui, cada estudante é conhecido pelo nome, acompanhado em seu ritmo e estimulado a ir adiante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PEDAGOGIA / VALORES ============ -->
+<section class="section pedagogia" id="pedagogia">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Nossa pedagogia</span>
+      <h2>Cinco valores que orientam o jeito marista de educar</h2>
+      <p class="lead" style="margin:0 auto">Princípios herdados de São Marcelino Champagnat e traduzidos no cotidiano da escola, da educação infantil ao fim do ensino fundamental.</p>
+    </div>
+    <div class="valores">
+      <article class="valor">
+        <div class="valor-num">i.</div>
+        <h3>Presença</h3>
+        <p>Estar junto, conhecer cada estudante pelo nome, acompanhar de perto a caminhada de cada um.</p>
+      </article>
+      <article class="valor">
+        <div class="valor-num">ii.</div>
+        <h3>Espírito de família</h3>
+        <p>Construir uma comunidade educativa em que famílias, educadores e crianças se reconhecem e se cuidam.</p>
+      </article>
+      <article class="valor">
+        <div class="valor-num">iii.</div>
+        <h3>Amor ao trabalho</h3>
+        <p>Cultivar o gosto pelo estudo, o esforço persistente e a alegria das pequenas conquistas diárias.</p>
+      </article>
+      <article class="valor">
+        <div class="valor-num">iv.</div>
+        <h3>Simplicidade</h3>
+        <p>Relacionar-se com franqueza e leveza, sem rebuscamentos — na palavra, no gesto e no convívio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEGMENTOS ============ -->
+<section class="section segmentos" id="segmentos">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Segmentos</span>
+      <h2>Etapas que acompanham cada fase da vida escolar</h2>
+    </div>
+    <div class="seg-grid">
+      <article class="seg">
+        <div class="seg-tag">i.</div>
+        <h3>Educação Infantil</h3>
+        <div class="seg-faixa">A partir dos 3 anos</div>
+        <p>Acolhimento, descoberta e brincadeira como caminhos para o aprender. Espaços pensados para a primeira convivência com a escola, o grupo e a autonomia.</p>
+        <ul>
+          <li>Rotina estruturada com cuidados pedagógicos individuais</li>
+          <li>Iniciação à leitura, escrita e raciocínio lógico</li>
+          <li>Educação afetiva, social e religiosa</li>
+        </ul>
+      </article>
+      <article class="seg">
+        <div class="seg-tag">ii.</div>
+        <h3>Ensino Fundamental — Anos Iniciais</h3>
+        <div class="seg-faixa">1º ao 5º ano</div>
+        <p>A consolidação das bases acadêmicas em um ambiente em que o estudante é protagonista e acompanhado individualmente em sua trajetória.</p>
+        <ul>
+          <li>Alfabetização sólida em língua portuguesa e matemática</li>
+          <li>Projetos integradores em ciências, história e geografia</li>
+          <li>Educação para a convivência, valores e cidadania</li>
+        </ul>
+      </article>
+      <article class="seg">
+        <div class="seg-tag">iii.</div>
+        <h3>Ensino Fundamental — Anos Finais</h3>
+        <div class="seg-faixa">6º ao 9º ano</div>
+        <p>A etapa em que o estudante se prepara para escolhas maiores, com aprofundamento curricular e desenvolvimento das competências socioemocionais.</p>
+        <ul>
+          <li>Aprofundamento em todas as áreas do conhecimento</li>
+          <li>Orientação de estudos e desenvolvimento de autonomia</li>
+          <li>Atividades culturais, esportivas e de pastoral escolar</li>
+        </ul>
+      </article>
+      <article class="seg">
+        <div class="seg-tag">iv.</div>
+        <h3>Atividades complementares</h3>
+        <div class="seg-faixa">Contraturno e projetos</div>
+        <p>Oferta de atividades culturais, esportivas e de aprofundamento que complementam a formação integral dos estudantes, em horário diverso do regular.</p>
+        <ul>
+          <li>Modalidades esportivas e iniciação artística</li>
+          <li>Projetos de leitura, redação e olimpíadas do conhecimento</li>
+          <li>Encontros de pastoral, valores e voluntariado</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFERENCIAIS ============ -->
+<section class="section diferenciais">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Por que Champagnat</span>
+      <h2>Uma escola próxima, com base sólida</h2>
+    </div>
+    <div class="dif-grid">
+      <article class="dif">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zm0 0v6m4-4v6a5 5 0 0010 0v-6"/></svg>
+        </div>
+        <h3>Tradição marista de mais de 200 anos</h3>
+        <p>Herdamos a experiência educativa dos Irmãos Maristas, presente em quase oitenta países e em centenas de escolas no Brasil — adaptada ao tempo e ao contexto de cada comunidade local.</p>
+      </article>
+      <article class="dif">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/></svg>
+        </div>
+        <h3>Acompanhamento individual</h3>
+        <p>Turmas com dimensionamento que favorece o vínculo entre educadores e estudantes. Cada criança é conhecida pelo nome, acompanhada em seu ritmo e estimulada a avançar.</p>
+      </article>
+      <article class="dif">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1m0-12.8l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+        </div>
+        <h3>Formação integral</h3>
+        <p>Articulação entre excelência acadêmica, valores humano-cristãos, cuidado socioemocional e atividades culturais, esportivas e de pastoral — todas as dimensões da vida escolar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="section depoimentos">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">O que dizem nossas famílias</span>
+      <h2>Vozes da comunidade educativa</h2>
+    </div>
+    <div class="dep-grid">
+      <article class="dep">
+        <p class="dep-text">A acolhida na escola foi o que mais nos marcou desde o primeiro dia. Sentimos que nossos filhos são vistos como pessoas, não como mais um número de matrícula.</p>
+        <div class="dep-author">Família de estudante</div>
+        <div class="dep-role">Ensino Fundamental — Anos Iniciais</div>
+      </article>
+      <article class="dep">
+        <p class="dep-text">Encontramos aqui um ambiente sério no estudo e leve na convivência. A comunicação com os professores é constante e isso faz toda a diferença para a gente.</p>
+        <div class="dep-author">Família de estudante</div>
+        <div class="dep-role">Educação Infantil</div>
+      </article>
+      <article class="dep">
+        <p class="dep-text">A proposta marista é o que nos atraiu. Vemos no dia a dia que valores como simplicidade e espírito de família não são só discurso — aparecem nas relações da escola.</p>
+        <div class="dep-author">Família de estudante</div>
+        <div class="dep-role">Ensino Fundamental — Anos Finais</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATRÍCULAS ============ -->
+<section class="section matriculas" id="matriculas">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Matrículas</span>
+      <h2>Como ingressar na Escola Champagnat Unidade Birigui</h2>
+      <p class="lead" style="margin:0 auto">O processo de matrícula é simples e conduzido pessoalmente pela equipe da secretaria, com acolhimento individual a cada família.</p>
+    </div>
+    <div class="mat-grid">
+      <div class="mat-step">
+        <div class="mat-num">01</div>
+        <h3>Agendamento de visita</h3>
+        <p>Entre em contato com a secretaria pelo formulário ao lado, telefone ou e-mail. Agendaremos uma visita guiada à escola para conhecer os espaços e a proposta pedagógica.</p>
+      </div>
+      <div class="mat-step">
+        <div class="mat-num">02</div>
+        <h3>Conversa com a coordenação</h3>
+        <p>Em uma reunião pessoal, apresentamos a etapa de ensino, a rotina, os materiais, as atividades complementares e respondemos a todas as dúvidas da família.</p>
+      </div>
+      <div class="mat-step">
+        <div class="mat-num">03</div>
+        <h3>Efetivação da matrícula</h3>
+        <p>Com a decisão tomada, a secretaria orienta a documentação necessária, formaliza o contrato educacional e organiza a integração do estudante.</p>
+      </div>
+    </div>
+    <div class="mat-note">
+      <strong>Importante:</strong> a Escola Champagnat Unidade Birigui é instituição de ensino regular autorizada pela Secretaria da Educação. Toda matrícula é formalizada por contrato educacional assinado em via física, na sede da escola, com a presença do responsável legal pelo estudante.
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="section contato" id="contato">
+  <div class="container">
+    <div class="cont-grid">
+      <div class="cont-info">
+        <span class="eyebrow">Fale com a escola</span>
+        <h2>Estamos à disposição da sua família.</h2>
+        <p class="lead">A secretaria atende presencialmente em horário comercial. Para agendamento de visita ou esclarecimentos, escolha o canal mais conveniente.</p>
+
+        <div class="cont-block">
+          <h4>Endereço</h4>
+          <p>Rua Santos Dumont, 482 — Centro<br>Birigui — SP · CEP 16200-095</p>
+        </div>
+        <div class="cont-block">
+          <h4>Telefone</h4>
+          <p><a href="tel:+551836412580">(18) 3641-2580</a></p>
+        </div>
+        <div class="cont-block">
+          <h4>E-mail</h4>
+          <p><a href="mailto:contato@escolachampagnatbirigui.com.br">contato@escolachampagnatbirigui.com.br</a></p>
+        </div>
+        <div class="cont-block">
+          <h4>Horário de atendimento</h4>
+          <p>Segunda a sexta, das 7h30 às 17h30</p>
+        </div>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="nome">Nome do responsável</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="tel">Telefone</label>
+            <input id="tel" name="tel" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="seg">Segmento de interesse</label>
+          <select id="seg" name="seg" required>
+            <option value="">Selecione...</option>
+            <option>Educação Infantil</option>
+            <option>Ensino Fundamental — Anos Iniciais</option>
+            <option>Ensino Fundamental — Anos Finais</option>
+            <option>Outro / Mais informações</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Mensagem</label>
+          <textarea id="msg" name="msg" rows="3"></textarea>
+        </div>
+        <div class="form-msg" id="formMsg">
+          Mensagem registrada. A secretaria entrará em contato em breve.
+        </div>
+        <button type="submit">Enviar mensagem</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l1.8 4.6 4.9.4-3.7 3.2 1.1 4.8L12 12.5 7.9 15l1.1-4.8L5.3 7l4.9-.4L12 2z"/></svg>
+        </span>
+        <h4>Escola Champagnat<br>Unidade Birigui</h4>
+        <p>Educação Infantil e Ensino Fundamental sob a tradição educativa marista, mantida pela Associação Brasileira de Educação e Cultura.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#sobre">Sobre a escola</a></li>
+          <li><a href="#pedagogia">Pedagogia</a></li>
+          <li><a href="#segmentos">Segmentos</a></li>
+          <li><a href="#matriculas">Matrículas</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <ul>
+          <li>Rua Santos Dumont, 482 — Centro</li>
+          <li>Birigui — SP · CEP 16200-095</li>
+          <li><a href="tel:+551836412580">(18) 3641-2580</a></li>
+          <li><a href="mailto:contato@escolachampagnatbirigui.com.br">contato@escolachampagnatbirigui.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <div class="foot-cnpj">
+        <b>Associação Brasileira de Educação e Cultura — ABEC</b>
+        CNPJ 60.982.352/0080-15 · Escola Champagnat Unidade Birigui<br>
+        © 2026 Escola Champagnat Unidade Birigui — Todos os direitos reservados.
+      </div>
+      <div class="foot-legal-links">
+        <a data-modal="privacy">Política de Privacidade</a>
+        <a data-modal="terms">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODAL: PRIVACIDADE ============ -->
+<div class="modal" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="priv-title">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Fechar" data-close>×</button>
+    <span class="modal-sub">Documento institucional</span>
+    <h2 id="priv-title">Política de Privacidade</h2>
+
+    <p>A Associação Brasileira de Educação e Cultura — ABEC (CNPJ 60.982.352/0080-15), mantenedora da Escola Champagnat Unidade Birigui, sediada na Rua Santos Dumont, 482, Centro, Birigui/SP, CEP 16200-095, valoriza a privacidade dos visitantes deste site e dos integrantes de sua comunidade educativa. Esta Política descreve como coletamos, usamos, armazenamos e protegemos dados pessoais, em conformidade com a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados — LGPD).</p>
+
+    <h3>1. Dados que coletamos</h3>
+    <p>Por meio deste site, coletamos apenas os dados informados voluntariamente pelo visitante no formulário de contato, tais como nome, e-mail, telefone, segmento de interesse e mensagem livre. Também podem ser coletados dados técnicos não identificáveis (como endereço IP e tipo de navegador) para fins estatísticos e de segurança.</p>
+
+    <h3>2. Finalidade do tratamento</h3>
+    <p>Os dados coletados são utilizados exclusivamente para:</p>
+    <ul>
+      <li>Responder a solicitações de contato e agendar visitas à escola;</li>
+      <li>Encaminhar informações institucionais e pedagógicas solicitadas pela família;</li>
+      <li>Conduzir o processo de matrícula, quando aplicável;</li>
+      <li>Cumprir obrigações legais e regulatórias.</li>
+    </ul>
+
+    <h3>3. Compartilhamento</h3>
+    <p>Não comercializamos, alugamos ou compartilhamos dados pessoais com terceiros para fins promocionais. O compartilhamento ocorre apenas com prestadores de serviços essenciais à operação da escola, sob obrigação contratual de sigilo, ou quando exigido por autoridade pública competente.</p>
+
+    <h3>4. Armazenamento e segurança</h3>
+    <p>Os dados são armazenados em ambientes controlados, com acesso restrito a colaboradores autorizados, e mantidos pelo tempo estritamente necessário ao cumprimento das finalidades descritas e das obrigações legais aplicáveis.</p>
+
+    <h3>5. Direitos do titular</h3>
+    <p>Nos termos da LGPD, o titular pode solicitar, a qualquer momento, confirmação da existência de tratamento, acesso, correção, anonimização, portabilidade ou eliminação dos seus dados, bem como revogar consentimentos anteriormente concedidos. As solicitações devem ser encaminhadas ao e-mail contato@escolachampagnatbirigui.com.br.</p>
+
+    <h3>6. Atualizações</h3>
+    <p>Esta Política pode ser atualizada periodicamente. A versão vigente estará sempre disponível neste mesmo endereço, com a respectiva data de revisão.</p>
+  </div>
+</div>
+
+<!-- ============ MODAL: TERMOS ============ -->
+<div class="modal" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Fechar" data-close>×</button>
+    <span class="modal-sub">Documento institucional</span>
+    <h2 id="terms-title">Termos de Uso</h2>
+
+    <p>Estes Termos de Uso regem o acesso e a utilização do site institucional da Escola Champagnat Unidade Birigui, mantida pela Associação Brasileira de Educação e Cultura — ABEC, CNPJ 60.982.352/0080-15, com sede na Rua Santos Dumont, 482, Centro, Birigui/SP, CEP 16200-095.</p>
+
+    <h3>1. Finalidade do site</h3>
+    <p>Este site tem caráter exclusivamente informativo e institucional. Apresenta a proposta pedagógica, os segmentos de ensino, a história da escola e os canais de contato com a secretaria. Não comercializa produtos nem realiza vendas ou cobranças por meio digital.</p>
+
+    <h3>2. Propriedade intelectual</h3>
+    <p>Todo o conteúdo deste site — incluindo textos, imagens, marcas, logotipos, layout e identidade visual — é de propriedade da Associação Brasileira de Educação e Cultura — ABEC, ou utilizado mediante autorização. A reprodução total ou parcial sem autorização prévia e expressa é proibida.</p>
+
+    <h3>3. Uso permitido</h3>
+    <p>O visitante compromete-se a utilizar este site para fins lícitos, sem prejudicar o funcionamento dos serviços, a integridade dos dados ou os direitos de terceiros. É vedada qualquer tentativa de acesso não autorizado, mineração de dados automatizada ou uso comercial não consentido das informações aqui disponibilizadas.</p>
+
+    <h3>4. Formulário de contato</h3>
+    <p>O envio de mensagens pelo formulário implica concordância com a coleta e o tratamento dos dados informados, conforme a Política de Privacidade. O envio de mensagens não estabelece, por si só, vínculo de matrícula, contratação de serviços educacionais ou obrigação por parte da escola.</p>
+
+    <h3>5. Matrícula e contrato educacional</h3>
+    <p>A matrícula na Escola Champagnat Unidade Birigui é formalizada exclusivamente por contrato educacional escrito, assinado presencialmente na secretaria da escola pelo responsável legal do estudante, mediante apresentação da documentação exigida.</p>
+
+    <h3>6. Limitação de responsabilidade</h3>
+    <p>Esforçamo-nos para manter as informações deste site precisas e atualizadas, mas não garantimos disponibilidade ininterrupta nem ausência de eventuais imprecisões. Em caso de dúvida sobre qualquer informação, recomendamos contato direto com a secretaria pelos canais oficiais.</p>
+
+    <h3>7. Foro</h3>
+    <p>Para dirimir quaisquer questões oriundas destes Termos, fica eleito o foro da Comarca de Birigui, Estado de São Paulo, com renúncia a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+</div>
+
+<script>
+  // Menu mobile
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => navLinks.classList.remove('open'))
+  );
+
+  // Modais (Privacidade / Termos)
+  const openers = document.querySelectorAll('[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+  function openModal(id){
+    const m = document.getElementById('modal-' + id);
+    if(!m) return;
+    m.classList.add('show');
+    document.body.classList.add('modal-open');
+    m.scrollTop = 0;
+  }
+  function closeAll(){
+    modals.forEach(m => m.classList.remove('show'));
+    document.body.classList.remove('modal-open');
+  }
+  openers.forEach(o => o.addEventListener('click', e => {
+    e.preventDefault();
+    openModal(o.dataset.modal);
+  }));
+  document.querySelectorAll('[data-close]').forEach(b =>
+    b.addEventListener('click', closeAll)
+  );
+  modals.forEach(m =>
+    m.addEventListener('click', e => { if(e.target === m) closeAll(); })
+  );
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAll(); });
+
+  // Form (apenas UI — sem backend; respeita LGPD: não envia dados)
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    formMsg.classList.add('show');
+    form.reset();
+    setTimeout(() => formMsg.classList.remove('show'), 6000);
+  });
+</script>
+</body>
+</html>
